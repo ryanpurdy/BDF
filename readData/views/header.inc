@@ -11,7 +11,7 @@
 	 	margin-right:auto;
  	}
  	center{background-color:white;}
- 	h1{font-size: 3em;}
+ 	p{font-size: 24px;}
  	
  </style>
 </head>
