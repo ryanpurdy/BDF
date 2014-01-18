@@ -17,8 +17,7 @@ class contactsModel extends DB{
 		}
 		
 		public function getOne($id=0){
-			
-			$sql = "select * from Details where id = :id";
+			$sql = "select * from Details where artID = :id";
 			$st = $this->db->prepare($sql);
 			$st->execute(array(":id"=>$id));
 			

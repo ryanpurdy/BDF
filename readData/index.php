@@ -12,12 +12,10 @@ if(!empty($_GET["action"])){
 	if($_GET["action"]=="home"){	
 		$result = $contacts->getAll();
 		$views->getView("views/body.php", $result);
-		echo("1");
 	}
 	if($_GET["action"]=="details"){
 		$result = $contacts->getOne($_GET["id"]);
 		$views->getView("views/details.php", $result);	
-		echo("2");
 	}
 }else{
 	$result = $contacts->getAll();
