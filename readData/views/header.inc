@@ -19,5 +19,14 @@
 <center>
 <p><b> Client List </b></p>
 <p><a href="?action=">HOME</a> | <a href="?action=login">Login</a></p>
+
+<?
+if($_SESSION['loggedin']==1){
+	echo "<a href='/index.php?action=logout'>LOGOUT</a></p>";
+	echo "<a href='/protected.php?actions='>Protected</a><a href'/protected.php?action=add'>Add a Contact</a></p>";
+}else{
+	echo "<a href ='/index.php?action=login'>LOGIN</a></p>";
+}
+?>
 </center>
 
