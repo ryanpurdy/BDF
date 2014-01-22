@@ -1,6 +1,5 @@
 <?
-if($_SESSION["loggedin"] == 1){
-	
+if($_SESSION["loggedin"] = 1){	
 }else{
 	header('location: index.php');
 }

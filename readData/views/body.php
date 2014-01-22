@@ -4,7 +4,7 @@
 	
 		echo $d["name"];
 		echo " ";
-		echo $d["organization"];
+		//echo $d["organization"];
 		echo " <a href=?action=details&id=".$d["clientID"].">details</a>";
 		echo "<br>";
 	}

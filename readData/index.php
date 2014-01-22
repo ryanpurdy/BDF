@@ -36,13 +36,16 @@ if(!empty($_GET["action"])){
 			echo "<center>Login Error</center>";
 			$views->getView("views/loginform.html");
 		}
-		if($_GET["action"]=="logout"){
+	}
+	if($_GET["action"]=="logout"){
+		
 			$contacts->logout();
 			header("location: index.php");
 		}
-	}
+//	}//typo
 	
 }else{
+
 	$result = $contacts->getAll();
 	$views->getView("views/body.php", $result);
 }

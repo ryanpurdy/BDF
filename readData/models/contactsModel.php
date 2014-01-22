@@ -3,15 +3,13 @@ include 'DB.php';
 
 class contactsModel extends DB{
 		
-		public function __constract(){
-			
-		}
+		
 		
 		public function getAll(){
-			
-			$sql = "select u.name, u.clientID, ud.phone
+			// you mean contacts?
+			$sql = "select name, clientID, phone
 			from
-			users u join user_details ud on u.id = ud.id";
+			Clients";
 			$st = $this->db->prepare($sql);
 			$st->execute();
 			
@@ -25,8 +23,10 @@ class contactsModel extends DB{
 			
 			return $st->fetchAll();
 		}
-		public function cheskLogin($uname = '', $password=''){
-			$sql= 'select * from users where un = :uname and pass=:password';
+		public function checkLogin($uname = '', $password=''){
+		
+			$sql= 'select * from Clients where userName = :uname and password=:password';
+			// Clients not users // your column names are wrong too
 			$st = $this->db->prepare($sql);
 			$st->execute(array(':uname'=>$uname, ':password'=>$password));
 			
@@ -42,6 +42,7 @@ class contactsModel extends DB{
 		}
 		
 	public function logout(){
+
 		$_SESSION['loggedin'] =0;
 	}
 }
