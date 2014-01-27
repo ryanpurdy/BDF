@@ -20,7 +20,7 @@ if(!empty($_GET["action"])){
 		$result = $contacts->getAll();
 		$views->getView("views/body.php", $result);
 	}
-	if($_GET["action"]=="details"){
+	if($_GET["action"]=="Clients"){
 		$result = $contacts->getOne($_GET["id"]);
 		$views->getView("views/details.php", $result);	
 	}
