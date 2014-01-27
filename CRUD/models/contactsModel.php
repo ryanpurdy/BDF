@@ -9,7 +9,7 @@ class contactsModel extends DB{
 		
 		public function getAll(){
 			// you mean contacts?
-			$sql = "select name, clientID, phone
+			$sql = "select name, clientID, email, phone
 			from
 			Clients";
 			$st = $this->db->prepare($sql);
@@ -18,19 +18,19 @@ class contactsModel extends DB{
 			return $st->fetchAll(); 
 		}
 		
-		public function getOne($id=0){
-			$sql = "select * from Clients where artID = :id";
+		public function getOne($clientID=0){
+			$sql = "select * from Clients where clientID = :clientID";
 			$st = $this->db->prepare($sql);
-			$st->execute(array(":id"=>$id));
+			$st->execute(array(":clientID"=>$clientID));
 			
 			return $st->fetchAll();
 		}
-		public function checkLogin($uname = '', $password=''){
+		public function checkLogin($userName = '', $password=''){
 		
-			$sql= 'select * from Clients where userName = :uname and password=:password';
+			$sql= 'select * from Clients where userName = :username and password=:password';
 			// Clients not users // your column names are wrong too
 			$st = $this->db->prepare($sql);
-			$st->execute(array(':uname'=>$uname, ':password'=>$password));
+			$st->execute(array(':username'=>$userName, ':password'=>$password));
 			
 			$num = $st->rowCount();
 			
@@ -48,26 +48,26 @@ class contactsModel extends DB{
 		$_SESSION['loggedin'] =0;
 	}
 	
-	public function update($id=0, $email="", $phone="", $userName=""){
+	public function update($clientID=0, $email="", $phone=""){
 	
-	$sql = "update Clients set email = :email, phone=:phone where id =:id";
+	$sql = "update Clients set email = :email, phone=:phone where clientID =:clientID";
 	$st = $this->db->prepare($sql);
-	$st->execute(array("id"=>$id, ":email"=>$email, ":phone"=> $phone, ":userName"=>$userName));	
+	$st->execute(array("clientID"=>$clientID, ":email"=>$email, ":phone"=> $phone));	
 	} 
 	
-	public function delete($id=0){
-		$sql= "delete from Clients where client =:id";
+	public function delete($clientID=0){
+		$sql= "delete from Clients where clientID =:clientID";
 		$st = $this->db->prepare($sql);
-		$st->execute(array("id"=>$id));
+		$st->execute(array(":clientID"=>$clientID));
 		
-		$sql = "delete from users where clientID= :id";
-		$st = $this->db->prepare($sql);
-		$st->execute(array(":id"=>$id));
+		//$sql = "delete from Clients where clientID = :clientID";
+		//$st = $this->db->prepare($sql);
+		//$st->execute(array(":clientID"=>$clientID));
 	}
 	
 	public function add($name = '', $userName='', $password='', $email =''){
 		
-		$sql = "insert into users (userName, password, email)
+		$sql = "insert into Clients (userName, password, email)
 							values (:userName,:password, :email)";
 		$st = $this->db->prepare(sql);
 		$st-> execute(array(":userName"=> $userName, ":password" => $password, ":email" => $email));

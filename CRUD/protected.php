@@ -16,20 +16,20 @@ if(!empty($_GET["action"])){
 	
 	if($_GET["action"]=="update"){
 	
-		$result = $contacts->getOne($_GET["id"]);
-		$views->getView("views/protected.php, $result");
+		$result = $contacts->getOne($_GET["clientID"]);
+		$views->getView("views/updateform.html", $result);
 		
 	}else if($_GET["action"]=="updateaction"){
 	
-		$contacts->update($_GET["id"],$_POST["userName"], $_POST["phone"],$_POST["email"]);
+		$contacts->update($_GET["clientID"],$_POST["email"], $_POST["phone"]);
 		$result = $contacts->getAll();
-		$views->getView("views/protected.php,$result");
+		$views->getView("views/protected.php",$result);
 	
 	}else if($_GET["action"] == "delete"){
 	
-		$contacts->delete($_GET["id"]);
+		$contacts->delete($_GET["clientID"]);
 		$result = $contacts->getAll();
-		$views->getView("views/protected.php,$result");
+		$views->getView("views/protected.php",$result);
 	
 	}else if ($_GET["action"] == "add"){
 		
@@ -37,7 +37,7 @@ if(!empty($_GET["action"])){
 	
 	}else if ($_GET["action"] == "addaction"){
 
-		$contacts->add($_POST["userName"], $_POST["email"], $_POST[phone] );
+		$contacts->add($_POST["name"], $_POST["userName"], $_POST["password"], $_POST["email"], $_POST["phone"] );
 		$result = $contacts -> getAll();
 		$result->getView("views/protected.php", $result);	
 	}

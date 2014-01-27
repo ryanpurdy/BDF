@@ -21,7 +21,7 @@ if(!empty($_GET["action"])){
 		$views->getView("views/body.php", $result);
 	}
 	if($_GET["action"]=="Clients"){
-		$result = $contacts->getOne($_GET["id"]);
+		$result = $contacts->getOne($_GET["clientID"]);
 		$views->getView("views/details.php", $result);	
 	}
 	if($_GET["action"]=="login"){

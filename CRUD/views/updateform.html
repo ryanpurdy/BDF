@@ -2,10 +2,9 @@
 foreach($data as $d){
 ?>
 <center>
-	<form action="?action=updateaction&id=<?=$d["id"]?>" method="post">
-	<input type= 'text' name= 'userName' value="<?=$d["userName"]?>"/>
-	<br><input type='text' name='phone' value=<"<?=$d["phone"]?>"/>
-	<br><input type='text' name='email' value=<"<?=$d["email"]?>"/>
+	<form action="?action=updateaction&clientID=<?=$d["clientID"]?>" method="post">
+	<input type= 'text' name='email' value="<?=$d["email"]?>"/>
+	<br><input type='text' name='phone' value="<?=$d["phone"]?>"/>
 	<br><input type='Submit' value="Update"/>
 	</form>
 </center>
