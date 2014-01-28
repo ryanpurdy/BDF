@@ -1,14 +1,11 @@
 <?
 	echo "<center>";
 	foreach($data as $d){
-		echo " <b>Item Name:</b>";
-		echo $d["itemName"];
-		echo " <b>Date:</b>";
-		echo $d["date"];
-		echo " <b>Item Description:</b>";
-		echo $d["Description"];
+		echo " <b>Email:</b>";
+		echo $d["email"];
+		echo " <br><b>Phone:</b>";
+		echo $d["phone"];
 		echo "<br>";
-		echo "working";
 	}
 	echo "</center>";
 ?>

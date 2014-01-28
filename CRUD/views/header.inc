@@ -22,8 +22,8 @@
 
 <?
 if($_SESSION['loggedin']== 1){
-	echo "<a href='index.php?action=logout'>LOGOUT</a></p>";
-	echo "<a href='protected.php?actions='>Protected</a><a href'/protected.php?action=add'>Add a Contact</a></p>";
+	echo "<a href='index.php?action=logout'>LOGOUT</a> -";
+	echo " <a href='protected.php?action='>Protected</a> - <a href='protected.php?action=add'>Add a Contact</a>";
 }else{
 	echo "<a href ='index.php?action=login'>LOGIN</a></p>";
 }
