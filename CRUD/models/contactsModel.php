@@ -9,7 +9,7 @@ class contactsModel extends DB{
 		
 		public function getAll(){
 			// you mean contacts?
-			$sql = "select name, clientID, email, phone
+			$sql = "select clientID, userName, password, name, organization, email, phone
 			from
 			Clients";
 			$st = $this->db->prepare($sql);
@@ -48,11 +48,11 @@ class contactsModel extends DB{
 		$_SESSION['loggedin'] =0;
 	}
 	
-	public function update($clientID=0, $email="", $phone=""){
+	public function update($clientID=0, $name= "", $organization = "" , $email="", $phone=""){
 	
-	$sql = "update Clients set email = :email, phone=:phone where clientID =:clientID";
+	$sql = "update Clients set name = :name, organization = :organization, email = :email, phone=:phone where clientID =:clientID";
 	$st = $this->db->prepare($sql);
-	$st->execute(array("clientID"=>$clientID, ":email"=>$email, ":phone"=> $phone));	
+	$st->execute(array("clientID"=>$clientID, ":name"=>$name, ":organization" => $organization, ":email"=>$email, ":phone"=> $phone));	
 	} 
 	
 	public function delete($clientID=0){
@@ -65,18 +65,18 @@ class contactsModel extends DB{
 		//$st->execute(array(":clientID"=>$clientID));
 	}
 	
-	public function add($name = '', $userName='', $password='', $email =''){
+	public function add( $userName = '', $password='', $name = '', $organization = '',  $email ='', $phone = ''){
 		
-		$sql = "insert into Clients (userName, password, email)
-							values (:userName,:password, :email)";
-		$st = $this->db->prepare(sql);
-		$st-> execute(array(":userName"=> $userName, ":password" => $password, ":email" => $email));
+		$sql = "insert into Clients (userName, password, name, email, phone)
+							values (  :userName, :password, :name, :email, :phone)";
+		$st = $this->db->prepare($sql);
+		$st-> execute(array(":userName"=> $userName, ":password" => $password, ":name" => $name, ":email" => $email, ":phone"=>$phone));
 		$clietnId = $this->db->lastInsertId();
 		
-		$sql="insert into Clients (clientId, email, phone)
-						values (:clientId, ::email, :phone)";
-		$st = $this->db->prepare($sql);
-	    $st->execute(array(":clientId"=>$clientID, ":email"=> $email, ":phone"=>$phone));
+		//$sql="insert into Clients (clientID, email, phone)
+		//				values (:clientID, :email, :phone)";
+		//$st = $this->db->prepare($sql);
+	    //$st->execute(array(":clientID"=>$clientID, ":email"=> $email, ":phone"=>$phone));
 	}
 	
 }

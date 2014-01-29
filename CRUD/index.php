@@ -28,7 +28,7 @@ if(!empty($_GET["action"])){
 		$views->getView("views/loginform.html");
 	}
 	if($_GET["action"]=="checklogin"){
-		$result = $contacts->checkLogin($_POST["un"], $_POST["pass"]);
+		$result = $contacts->checkLogin($_POST["userName"], $_POST["password"]);
 		if(count($result)>0){
 			header("location: protected.php");
 		}else{

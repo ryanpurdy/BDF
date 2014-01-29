@@ -21,7 +21,7 @@ if(!empty($_GET["action"])){
 		
 	}else if($_GET["action"]=="updateaction"){
 	
-		$contacts->update($_GET["clientID"],$_POST["email"], $_POST["phone"]);
+		$contacts->update($_GET["clientID"],  $_POST["name"], $_POST["organization"], $_POST["email"], $_POST["phone"]);
 		$result = $contacts->getAll();
 		$views->getView("views/protected.php",$result);
 	
@@ -36,10 +36,9 @@ if(!empty($_GET["action"])){
 		$views->getView("views/addform.html");
 	
 	}else if ($_GET["action"] == "addaction"){
-
-		$contacts->add($_POST["name"], $_POST["userName"], $_POST["password"], $_POST["email"], $_POST["phone"] );
+		$contacts->add($_POST["userName"], $_POST["password"],  $_POST["name"], $_POST["organization"], $_POST["email"], $_POST["phone"] ); //
 		$result = $contacts -> getAll();
-		$result->getView("views/protected.php", $result);	
+		$views->getView("views/protected.php", $result);	
 	}
 
 	

@@ -21,8 +21,8 @@
 <p><a href="?action=">HOME</a> | <a href="?action=login">Login</a></p>
 
 <?
-if($_SESSION['loggedin']== 1){
-	echo "<a href='index.php?action=logout'>LOGOUT</a> -";
+if($_SESSION['loggedin'] = 1){ //PDF has 2 "=" signs and makes it break.
+	echo "<a href='index.php?action=logout'>Log Out</a> -";
 	echo " <a href='protected.php?action='>Protected</a> - <a href='protected.php?action=add'>Add a Contact</a>";
 }else{
 	echo "<a href ='index.php?action=login'>LOGIN</a></p>";
